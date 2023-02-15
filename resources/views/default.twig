@@ -1,52 +1,57 @@
 {% extends('layout.twig') %}
 
 {% block content %}
-<div class="container">
-    <div class="card m-5">
-        <div class="card-body">
-            <form action="/generate" method="post">
-                <div class="row">
-                    {% for teamId in 1..2 %}
-                        <div class="col">
-                            <div class="form-floating mb-3">
-                                <input name="team_{{ teamId }}_name"
-                                       type="text"
-                                       value="{{ data[["team_", teamId, "_name"]|join()] }}"
-                                       class="form-control {{ errors[["team_", teamId, "_name"]|join()] ? 'is-invalid' : '' }}"
-                                       id="team{{ teamId }}NameInput">
-                                <label for="team{{ teamId }}NameInput"
-                                       class="form-label">{{ teamId == 1 ? 'Home' : 'Away' }}
-                                    Team name</label>
-                                <div id="team{{ teamId }}ValidationFeedback" class="invalid-feedback">
-                                    {{ errors[["team_", teamId, "_name"]|join()]|join('<br />') }}
-                                </div>
-                            </div>
-                            {% for playerId in 1..3 %}
+    <div class="container">
+        <div class="card m-5">
+            <div class="card-body">
+                <form action="/generate" method="post">
+                    <div class="row">
+                        {% for teamId in 1..2 %}
+                            <div class="col">
                                 <div class="form-floating mb-3">
-                                    <input name="team_{{ teamId }}_players[]"
+                                    <input name="team_{{ teamId }}_name"
                                            type="text"
-                                           value="{{ data[["team_", teamId, "_players"]|join()][playerId-1] }}"
-                                           class="form-control {{ errors[["team_", teamId, "_players.", playerId-1]|join()] ? 'is-invalid' : '' }}"
-                                           id="team{{ teamId }}Player{{ playerId }}Name">
-                                    <label for="team{{ teamId }}Player{{ playerId }}Name"
-                                           class="form-label">Player {{ playerId }} name</label>
-                                    <div id="team{{ teamId }}Player{{ playerId }}NameValidationFeedback"
-                                         class="invalid-feedback">
-                                        {{ errors[["team_", teamId, "_players.", playerId-1]|join()]|join('<br />') }}
+                                           value="{{ data[["team_", teamId, "_name"]|join()] }}"
+                                           class="form-control {{ errors[["team_", teamId, "_name"]|join()] ? 'is-invalid' : '' }}"
+                                           id="team{{ teamId }}NameInput">
+                                    <label for="team{{ teamId }}NameInput"
+                                           class="form-label">{{ teamId == 1 ? 'Home' : 'Away' }}
+                                        Team name</label>
+                                    <div id="team{{ teamId }}ValidationFeedback" class="invalid-feedback">
+                                        {{ errors[["team_", teamId, "_name"]|join()]|join('<br />') }}
                                     </div>
                                 </div>
-                            {% endfor %}
-                        </div>
-                    {% endfor %}
+                                {% for playerId in 1..3 %}
+                                    <div class="form-floating mb-3">
+                                        <input name="team_{{ teamId }}_players[]"
+                                               type="text"
+                                               value="{{ data[["team_", teamId, "_players"]|join()][playerId-1] }}"
+                                               class="form-control {{ errors[["team_", teamId, "_players.", playerId-1]|join()] ? 'is-invalid' : '' }}"
+                                               id="team{{ teamId }}Player{{ playerId }}Name">
+                                        <label for="team{{ teamId }}Player{{ playerId }}Name"
+                                               class="form-label">Player {{ playerId }} name</label>
+                                        <div id="team{{ teamId }}Player{{ playerId }}NameValidationFeedback"
+                                             class="invalid-feedback">
+                                            {{ errors[["team_", teamId, "_players.", playerId-1]|join()]|join('<br />') }}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
 
-                </div>
-                <div class="row">
-                    <div class="col col-12">
-                        <button type="submit" class="btn btn-primary w-100">Submit</button>
                     </div>
-                </div>
-            </form>
+                    <div class="row">
+                        <div class="col col-12">
+                            <button type="submit" class="btn btn-primary w-100">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
+    <script>
+        document.addEventListener('keyup', function (event) {
+            event.target.classList.remove('is-invalid');
+        });
+    </script>
 {% endblock %}
