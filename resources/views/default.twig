@@ -12,7 +12,7 @@
                                 <input name="team_{{ teamId }}_name"
                                        type="text"
                                        value="{{ data[["team_", teamId, "_name"]|join()] }}"
-                                       class="form-control {{ errors[["team_", teamId, "_name"]|join()] ? 'is-invalid' : 'is-valid' }}"
+                                       class="form-control {{ errors[["team_", teamId, "_name"]|join()] ? 'is-invalid' : '' }}"
                                        id="team{{ teamId }}NameInput">
                                 <label for="team{{ teamId }}NameInput"
                                        class="form-label">{{ teamId == 1 ? 'Home' : 'Away' }}
@@ -26,7 +26,7 @@
                                     <input name="team_{{ teamId }}_players[]"
                                            type="text"
                                            value="{{ data[["team_", teamId, "_players"]|join()][playerId-1] }}"
-                                           class="form-control {{ errors[["team_", teamId, "_players.", playerId-1]|join()] ? 'is-invalid' : 'is-valid' }}"
+                                           class="form-control {{ errors[["team_", teamId, "_players.", playerId-1]|join()] ? 'is-invalid' : '' }}"
                                            id="team{{ teamId }}Player{{ playerId }}Name">
                                     <label for="team{{ teamId }}Player{{ playerId }}Name"
                                            class="form-label">Player {{ playerId }} name</label>
