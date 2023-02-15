@@ -1,0 +1,23 @@
+{
+    "name": "mattford/wsm-open-scoresheet",
+    "description": "App to generate scoresheets for WSM Open Badminton League",
+    "type": "project",
+    "require": {
+        "phpoffice/phpspreadsheet": "^1.27",
+        "slim/slim": "^4.11",
+        "slim/twig-view": "^3.3",
+        "slim/psr7": "^1.6",
+        "illuminate/support": "^10.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mattford\\WsmOpenScoresheet\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Matt Ford",
+            "email": "mattford@users.noreply.github.com"
+        }
+    ]
+}

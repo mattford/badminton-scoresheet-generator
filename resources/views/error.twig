@@ -1,0 +1,8 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+<div class="container mv-5 text-center">
+    <h1>Error {{ code }}: {{ description }}</h1>
+    <img width="60%" src="https://http.dog/{{ code }}.jpg">
+</div>
+{% endblock %}
