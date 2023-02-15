@@ -3,9 +3,7 @@ namespace Mattford\WsmOpenScoresheet\Handlers;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Log\LoggerInterface;
 use Slim\Exception\HttpException;
-use Slim\Handlers\ErrorHandler;
 use Slim\Views\Twig;
 use Throwable;
 
