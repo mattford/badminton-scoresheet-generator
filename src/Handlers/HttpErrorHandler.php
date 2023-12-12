@@ -25,7 +25,7 @@ class HttpErrorHandler
         } elseif ($displayErrorDetails) {
             $description = $exception->getMessage();
         }
-
+        error_log($exception->getMessage());
         $response = $this->app->getResponseFactory()->createResponse();
 
         if ($request->getHeader('Accept') === 'application/json') {

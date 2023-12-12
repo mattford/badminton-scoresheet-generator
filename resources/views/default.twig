@@ -40,6 +40,17 @@
                         {% endfor %}
 
                     </div>
+                    <div class="row mb-1">
+                        <div class="col col-12">
+                            <div class="btn-group w-100" role="group">
+                                <input type="radio" class="btn-check toggle-form-action" id="generate" name="action" data-action="/generate" autocomplete="off" checked>
+                                <label class="btn btn-outline-primary" for="generate">Generate XLSX</label>
+
+                                <input type="radio" class="btn-check toggle-form-action" id="match" name="action" data-action="/match" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="match">Start Match</label>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col col-12">
                             <button type="submit" class="btn btn-primary w-100">Submit</button>
@@ -50,6 +61,12 @@
         </div>
     </div>
     <script>
+        document.addEventListener('click', function (event) {
+           const target = event.target;
+           if (event.target.classList.contains('toggle-form-action')) {
+               document.querySelector('form').setAttribute('action', target.getAttribute('data-action'));
+           }
+        });
         document.addEventListener('keyup', function (event) {
             event.target.classList.remove('is-invalid');
         });

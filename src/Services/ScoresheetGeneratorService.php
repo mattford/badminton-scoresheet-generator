@@ -40,16 +40,18 @@ class ScoresheetGeneratorService
         $worksheet->getCell(self::HOME_TEAM_NAME_CELL)->setValue($teams[0]['name']);
         $worksheet->getCell(self::AWAY_TEAM_NAME_CELL)->setValue($teams[1]['name']);
 
+        $games = GameGeneratorService::generateGames($teams, $this->pattern);
+
         $row = self::MATCH_START_ROW;
-        foreach ($this->pattern as $gamePattern) {
+        foreach ($games as $game) {
             $col = self::HOME_TEAM_START_COL;
-            foreach ($gamePattern[0] as $homePlayerNumber) {
-                $worksheet->getCell("$col$row")->setValue($teams[0]['players'][$homePlayerNumber-1]);
+            foreach ($game[0] as $homePlayer) {
+                $worksheet->getCell("$col$row")->setValue($homePlayer);
                 $col = Coordinate::stringFromColumnIndex(Coordinate::columnIndexFromString($col)+1);
             }
             $col = self::AWAY_TEAM_START_COL;
-            foreach ($gamePattern[1] as $awayPlayerNumber) {
-                $worksheet->getCell("$col$row")->setValue($teams[1]['players'][$awayPlayerNumber-1]);
+            foreach ($game[1] as $awayPlayer) {
+                $worksheet->getCell("$col$row")->setValue($awayPlayer);
                 $col = Coordinate::stringFromColumnIndex(Coordinate::columnIndexFromString($col)+1);
             }
             $row++;

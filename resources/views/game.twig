@@ -1,0 +1,59 @@
+{% extends('layout.twig') %}
+
+{% block head %}
+    <link rel="stylesheet" href="/css/game.css" />
+{% endblock %}
+
+{% block content %}
+    <div class="container p-0 p-md-auto">
+        <div class="card m-0 m-md-5">
+            <div class="card-body">
+                <form action="/results" method="post">
+                    {% for team in data['teams'] %}
+                        <input type="hidden" name="team_{{ loop.index }}_name" value="{{ team['name'] }}">
+                        {% for player in team['players'] %}
+                            <input type="hidden" name="team_{{ loop.parent.loop.index }}_players[]" value="{{ player }}">
+                        {% endfor %}
+                    {% endfor %}
+                    <div class="teams-header">
+                        <div>
+                            {{ data['team_1_name'] }}
+                        </div>
+                        <div>
+                            vs
+                        </div>
+                        <div>
+                            {{ data['team_2_name'] }}
+                        </div>
+                    </div>
+                    <div class="my-1" style="display: grid; grid-template-columns: 1fr auto auto 1fr; grid-gap: 5px;">
+                    {% for game in data['games'] %}
+                        <div class="text-center align-middle">
+                            {{ game[0]|join(', ') }}
+                        </div>
+                        <div>
+                            <input inputmode="number" pattern="[0-9]+" class="score-input" required name="scores[{{ loop.index0 }}][]" />
+                        </div>
+                        <div>
+                            <input inputmode="number" pattern="[0-9]+" class="score-input" required name="scores[{{ loop.index0 }}][]"/>
+                        </div>
+                        <div class="text-center align-middle">
+                            {{ game[1]|join(', ') }}
+                        </div>
+                    {% endfor %}
+                    </div>
+                    <div class="row">
+                        <div class="col col-12">
+                            <button type="submit" class="btn btn-primary w-100">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('keyup', function (event) {
+            event.target.classList.remove('is-invalid');
+        });
+    </script>
+{% endblock %}

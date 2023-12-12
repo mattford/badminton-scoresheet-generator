@@ -8,7 +8,8 @@
         "slim/twig-view": "^3.3",
         "slim/psr7": "^1.6",
         "illuminate/support": "^10.0",
-        "bref/bref": "^1.7"
+        "bref/bref": "^1.7",
+        "ext-gd": "*"
     },
     "autoload": {
         "psr-4": {
