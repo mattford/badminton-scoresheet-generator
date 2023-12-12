@@ -16,9 +16,15 @@ $app = AppFactory::create();
 $app->post('/generate', [GenerateScoresheetController::class, 'generate']);
 $app->post('/results', [MatchController::class, 'generateResult']);
 $app->post('/match', [MatchController::class, 'view']);
-$app->get('/{path:.*}', function ($req, $res) {
-   $view = Twig::fromRequest($req);
-   return $view->render($res, 'default.twig');
+$app->get('/{path:.*}', function (\Slim\Psr7\Request $req, \Slim\Psr7\Response $res) {
+    $targetPath = realpath(__DIR__ . $req->getUri()->getPath());
+    if (str_starts_with($targetPath, __DIR__) && is_file($targetPath) && is_readable($targetPath)) {
+        $res = $res->withHeader('Content-Type', 'text/css');
+        $res->getBody()->write(file_get_contents($targetPath));
+        return $res;
+    }
+    $view = Twig::fromRequest($req);
+    return $view->render($res, 'default.twig');
 });
 
 // Add Routing Middleware
@@ -30,8 +36,7 @@ $errorMiddleware = $app->addErrorMiddleware(false, true, true);
 $errorMiddleware->setDefaultErrorHandler([$httpErrorHandler, 'handle']);
 
 // Create Twig
-$twig = Twig::create(__DIR__ . '/../resources/views', ['cache' => false, 'debug' => true]);
-$twig->addExtension(new \Twig\Extension\DebugExtension());
+$twig = Twig::create(__DIR__ . '/../resources/views', ['cache' => false]);
 $app->add(TwigMiddleware::create($app, $twig));
 
 $app->run();
