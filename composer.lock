@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "70ae7ebded32ef5d3b842574be6e65c0",
+    "content-hash": "51ee71d077e14e785e5f435f92a5fb45",
     "packages": [
         {
             "name": "async-aws/core",
@@ -207,6 +207,58 @@
                 }
             ],
             "time": "2023-02-15T10:55:10+00:00"
+        },
+        {
+            "name": "bref/extra-php-extensions",
+            "version": "0.12.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/brefphp/extra-php-extensions.git",
+                "reference": "5b2efc92411b77f6ffbb34224d26f46120684f47"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/brefphp/extra-php-extensions/zipball/5b2efc92411b77f6ffbb34224d26f46120684f47",
+                "reference": "5b2efc92411b77f6ffbb34224d26f46120684f47",
+                "shasum": ""
+            },
+            "conflict": {
+                "bref/bref": "<1.2.13"
+            },
+            "require-dev": {
+                "async-aws/core": "^1.7",
+                "async-aws/lambda": "^1.1",
+                "bref/logger": "^1.0",
+                "mnapoli/silly": "^1.7",
+                "mnapoli/silly-php-di": "^1.2",
+                "php-di/php-di": "^6.3",
+                "symfony/finder": "^5.2",
+                "symfony/http-client": "5.3.8",
+                "symfony/process": "^5.0"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias.nyholm@gmail.com"
+                }
+            ],
+            "description": "Extra PHP extensions for your lambda application.",
+            "support": {
+                "issues": "https://github.com/brefphp/extra-php-extensions/issues",
+                "source": "https://github.com/brefphp/extra-php-extensions/tree/0.12.4"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/Nyholm",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-02-07T18:56:05+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -3733,7 +3785,9 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "ext-gd": "*"
+    },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.6.0"
 }

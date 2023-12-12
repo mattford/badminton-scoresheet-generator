@@ -9,7 +9,8 @@
         "slim/psr7": "^1.6",
         "illuminate/support": "^10.0",
         "bref/bref": "^1.7",
-        "ext-gd": "*"
+        "ext-gd": "*",
+        "bref/extra-php-extensions": "^0.12.4"
     },
     "autoload": {
         "psr-4": {
