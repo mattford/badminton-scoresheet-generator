@@ -69,7 +69,7 @@ class ResultImageGeneratorService
             $this->bounded($x + 2 + ($width * .60), $y + 2, ($width - 2) * .4, $height - 4, function ($x, $y, $width, $height) use ($image, $colours, $game) {
                 imagefilledrectangle($image, $x, $y, $x + $width, $y + ($height / 2), $colours['darkBlue']);
                 $this->drawTextCentered($image, $x + ($width * .5), $y + ($height * .25), 'Away Team', $colours['white'], 18, 'calibri-bold.ttf');
-                $this->drawTextCentered($image, $x + ($width * .5), $y + ($height * .75), $game['teams'][0], $colours['black'], 18);
+                $this->drawTextCentered($image, $x + ($width * .5), $y + ($height * .75), $game['teams'][1], $colours['black'], 18);
             });
             $this->drawTextCentered($image, $x + ($width * .55), $y + ($height * .5), $game['scores'][1], $colours['black'], 40, 'calibri-bold.ttf');
         });
