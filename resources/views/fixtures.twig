@@ -1,0 +1,75 @@
+{% extends('layout.twig') %}
+
+{% block content %}
+    <div class="container">
+        <h1>WSM Open Badminton League - Season 7</h1>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            {% for division in data['divisions'] %}
+                <li class="nav-item" role="presentation">
+                    <button
+                            class="nav-link {{ loop.index == 1 ? 'active' : '' }}"
+                            id="tab-{{ division['id'] }}"
+                            data-bs-toggle="tab"
+                            data-bs-target="#tab-pane-{{ division['id'] }}"
+                            type="button"
+                            role="tab"
+                            aria-controls="tab-pane-{{ division['id'] }}"
+                            aria-selected="true"
+                    >{{ division['name'] }}</button>
+                </li>
+            {% endfor %}
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            {% for division in data['divisions'] %}
+                <div class="tab-pane {{ loop.index == 1 ? 'active' : '' }}" id="tab-pane-{{ division['id'] }}" role="tabpanel" aria-labelledby="tab-{{ division['id'] }}" tabindex="{{ loop.index }}">
+                    <select class="form-select form-select-lg mb-3 team-selector" aria-label="Select your team">
+                        <option selected>Select your team</option>
+                        {% for team in division['teams'] %}
+                            <option value="{{ team['id'] }}">{{ team['name'] }} ({{ team['players']|join(', ') }})</option>
+                        {% endfor %}
+                    </select>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Location</th>
+                                <th>Home Team</th>
+                                <th>Away Team</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for fixture in division['fixtures'] %}
+                            <tr class="match team-{{ fixture['teams'][0] }} team-{{ fixture['teams'][1] }}">
+                                <td>{{ fixture['date'] }}</td>
+                                <td>{{ fixture['location'] }}</td>
+                                <td>{{ fixture['team_names'][0] }}</td>
+                                <td>{{ fixture['team_names'][1] }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script>
+        document.querySelectorAll('.team-selector').forEach(elem => {
+           elem.addEventListener('change', function (event) {
+               var selectedTeam = event.target.value;
+               if (selectedTeam === 'Select your team') {
+                   document.querySelectorAll('.tab-pane.active .match').forEach(elem => {
+                       elem.style.display = 'table-row';
+                   });
+               } else {
+                   document.querySelectorAll('.tab-pane.active .match:not(.team-' + selectedTeam + ')').forEach(elem => {
+                       elem.style.display = 'none';
+                   });
+                   document.querySelectorAll('.tab-pane.active .match.team-' + selectedTeam).forEach(elem => {
+                       elem.style.display = 'table-row';
+                   });
+               }
+           });
+        });
+    </script>
+{% endblock %}

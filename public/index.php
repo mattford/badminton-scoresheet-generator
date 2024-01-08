@@ -1,6 +1,7 @@
 <?php
 
 use Mattford\WsmOpenScoresheet\Handlers\HttpErrorHandler;
+use Mattford\WsmOpenScoresheet\Http\Controllers\FixturesController;
 use Mattford\WsmOpenScoresheet\Http\Controllers\GenerateScoresheetController;
 use Mattford\WsmOpenScoresheet\Http\Controllers\MatchController;
 use Slim\Factory\AppFactory;
@@ -16,6 +17,7 @@ $app = AppFactory::create();
 $app->post('/generate', [GenerateScoresheetController::class, 'generate']);
 $app->post('/results', [MatchController::class, 'generateResult']);
 $app->post('/match', [MatchController::class, 'view']);
+$app->get('/fixtures', [FixturesController::class, 'view']);
 $app->get('/{path:.*}', function (\Slim\Psr7\Request $req, \Slim\Psr7\Response $res) {
     $targetPath = realpath(__DIR__ . $req->getUri()->getPath());
     if (str_starts_with($targetPath, __DIR__) && is_file($targetPath) && is_readable($targetPath)) {

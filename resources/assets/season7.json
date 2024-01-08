@@ -1,0 +1,501 @@
+{
+  "locations": [
+    {
+      "id": 1,
+      "name": "Health and Active Living Skills Centre",
+      "geolocation": [51.32240956437253, -2.968114090631636]
+    },
+    {
+      "id": 2,
+      "name": "Winterstoke Hundred Academy",
+      "geolocation": [51.34183363118676, -2.9341558447081884]
+    }
+  ],
+  "divisions": [
+    {
+      "id": 1,
+      "name": "Division 1",
+      "teams": [
+        {
+          "id": 1,
+          "name": "SJR Photography",
+          "players": [
+            "Ewa",
+            "Jason",
+            "Ian"
+          ]
+        },
+        {
+          "id": 2,
+          "name": "North Somerset Roller Garage Doors",
+          "players": [
+            "Vicky",
+            "Roy",
+            "Ben"
+          ]
+        },
+        {
+          "id": 3,
+          "name": "Ian Phillips Photography",
+          "players": [
+            "Jing",
+            "Jeremy",
+            "Jake"
+          ]
+        },
+        {
+          "id": 4,
+          "name": "The Stringing Room",
+          "players": [
+            "Bridget",
+            "Justin",
+            "Simon"
+          ]
+        }
+      ],
+      "fixtures": [
+        {
+          "id": 1,
+          "date": "2024-01-16T19:00:00Z",
+          "location": 1,
+          "teams": [1, 2]
+        },
+        {
+          "id": 2,
+          "date": "2024-01-23T20:00:00Z",
+          "location": 2,
+          "teams": [3, 4]
+        },
+        {
+          "id": 3,
+          "date": "2024-02-01T20:00:00Z",
+          "location": 2,
+          "teams": [1, 3]
+        },
+        {
+          "id": 4,
+          "date": "2024-02-08T19:00:00Z",
+          "location": 1,
+          "teams": [2, 4]
+        },
+        {
+          "id": 5,
+          "date": "2024-02-20T19:00:00Z",
+          "location": 1,
+          "teams": [1, 4]
+        },
+        {
+          "id": 6,
+          "date": "2024-02-27T20:00:00Z",
+          "location": 2,
+          "teams": [2, 3]
+        },
+        {
+          "id": 7,
+          "date": "2024-03-07T20:00:00Z",
+          "location": 2,
+          "teams": [2, 1]
+        },
+        {
+          "id": 8,
+          "date": "2024-03-14T19:00:00Z",
+          "location": 1,
+          "teams": [4, 3]
+        },
+        {
+          "id": 9,
+          "date": "2024-03-26T19:00:00Z",
+          "location": 1,
+          "teams": [3, 1]
+        },
+        {
+          "id": 10,
+          "date": "2024-04-09T20:00:00Z",
+          "location": 2,
+          "teams": [4, 2]
+        },
+        {
+          "id": 11,
+          "date": "2024-04-16T20:00:00Z",
+          "location": 2,
+          "teams": [4, 1]
+        },
+        {
+          "id": 12,
+          "date": "2024-04-23T20:00:00Z",
+          "location": 2,
+          "teams": [3, 2]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Division 2",
+      "teams": [
+        {
+          "id": 1,
+          "name": "Weston Super Soft Play Hire",
+          "players": [
+            "Lauren",
+            "Lewis",
+            "Graeme"
+          ]
+        },
+        {
+          "id": 2,
+          "name": "DSGS",
+          "players": [
+            "Paula",
+            "Ross",
+            "Simon"
+          ]
+        },
+        {
+          "id": 3,
+          "name": "Jack Morgan Consulting",
+          "players": [
+            "Alex",
+            "Alfie",
+            "David"
+          ]
+        },
+        {
+          "id": 4,
+          "name": "Brilliant Car Brylkowski",
+          "players": [
+            "Neil",
+            "John",
+            "Stephen"
+          ]
+        }
+      ],
+      "fixtures": [
+        {
+          "id": 1,
+          "date": "2024-01-16T20:00:00Z",
+          "location": 2,
+          "teams": [1, 2]
+        },
+        {
+          "id": 2,
+          "date": "2024-01-25T20:00:00Z",
+          "location": 2,
+          "teams": [3, 4]
+        },
+        {
+          "id": 3,
+          "date": "2024-02-01T19:00:00Z",
+          "location": 1,
+          "teams": [1, 3]
+        },
+        {
+          "id": 4,
+          "date": "2024-02-13T19:00:00Z",
+          "location": 1,
+          "teams": [2, 4]
+        },
+        {
+          "id": 5,
+          "date": "2024-02-20T20:00:00Z",
+          "location": 2,
+          "teams": [1, 4]
+        },
+        {
+          "id": 6,
+          "date": "2024-02-29T20:00:00Z",
+          "location": 2,
+          "teams": [2, 3]
+        },
+        {
+          "id": 7,
+          "date": "2024-03-07T19:00:00Z",
+          "location": 1,
+          "teams": [2, 1]
+        },
+        {
+          "id": 8,
+          "date": "2024-03-19T19:00:00Z",
+          "location": 1,
+          "teams": [4, 3]
+        },
+        {
+          "id": 9,
+          "date": "2024-03-26T20:00:00Z",
+          "location": 2,
+          "teams": [3, 1]
+        },
+        {
+          "id": 10,
+          "date": "2024-04-11T20:00:00Z",
+          "location": 2,
+          "teams": [4, 2]
+        },
+        {
+          "id": 11,
+          "date": "2024-04-18T20:00:00Z",
+          "location": 2,
+          "teams": [4, 1]
+        },
+        {
+          "id": 12,
+          "date": "2024-04-25T20:00:00Z",
+          "location": 2,
+          "teams": [3, 2]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Division 3",
+      "teams": [
+        {
+          "id": 1,
+          "name": "The Better Mortgage Company",
+          "players": ["Fiona", "Brian", "Karl"]
+        },
+        {
+          "id": 2,
+          "name": "AMS Electrical - South West",
+          "players": ["Georgina", "Matt", "Paul"]
+        },
+        {
+          "id": 3,
+          "name": "LP Property Lets",
+          "players": ["Rosie", "Aravind", "Matthew"]
+        },
+        {
+          "id": 4,
+          "name": "Birnbeck Insurance",
+          "players": ["Zoe", "Jasper", "Mike"]
+        }
+      ],
+      "fixtures": [
+        {
+          "id": 1,
+          "date": "2024-01-18T20:00:00Z",
+          "location": 2,
+          "teams": [1, 2]
+        },
+        {
+          "id": 2,
+          "date": "2024-01-25T19:00:00Z",
+          "location": 1,
+          "teams": [3, 4]
+        },
+        {
+          "id": 3,
+          "date": "2024-02-06T19:00:00Z",
+          "location": 1,
+          "teams": [1, 3]
+        },
+        {
+          "id": 4,
+          "date": "2024-02-13T20:00:00Z",
+          "location": 2,
+          "teams": [2, 4]
+        },
+        {
+          "id": 5,
+          "date": "2024-02-22T20:00:00Z",
+          "location": 2,
+          "teams": [1, 4]
+        },
+        {
+          "id": 6,
+          "date": "2024-02-29T19:00:00Z",
+          "location": 1,
+          "teams": [2, 3]
+        },
+        {
+          "id": 7,
+          "date": "2024-03-12T19:00:00Z",
+          "location": 1,
+          "teams": [2, 1]
+        },
+        {
+          "id": 8,
+          "date": "2024-03-19T20:00:00Z",
+          "location": 2,
+          "teams": [4, 3]
+        },
+        {
+          "id": 9,
+          "date": "2024-03-28T20:00:00Z",
+          "location": 2,
+          "teams": [3, 1]
+        },
+        {
+          "id": 10,
+          "date": "2024-04-11T19:00:00Z",
+          "location": 1,
+          "teams": [4, 2]
+        },
+        {
+          "id": 11,
+          "date": "2024-04-18T19:00:00Z",
+          "location": 1,
+          "teams": [4, 1]
+        },
+        {
+          "id": 12,
+          "date": "2024-04-25T19:00:00Z",
+          "location": 1,
+          "teams": [3, 2]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Division 4",
+      "teams": [
+        {
+          "id": 1,
+          "name": "Zak's Indian Kitchen",
+          "players": ["Lisa", "Stuart", "David"]
+        },
+        {
+          "id": 2,
+          "name": "David Biddle Double Glazing",
+          "players": ["Barbara", "Jamie", "Jon"]
+        },
+        {
+          "id": 3,
+          "name": "Tai Pan Takeaway",
+          "players": ["Vicky", "Alex", "Brett"]
+        },
+        {
+          "id": 4,
+          "name": "DJ Tav",
+          "players": ["Jill", "Oliver", "Alex"]
+        },
+        {
+          "id": 5,
+          "name": "A Squared Technologies",
+          "players": ["Beth", "Eivile", "Mark"]
+        }
+      ],
+      "fixtures": [
+        {
+          "id": 1,
+          "date": "2024-01-18T19:00:00Z",
+          "location": 1,
+          "teams": [1, 2]
+        },
+        {
+          "id": 2,
+          "date": "2024-01-23T19:00:00Z",
+          "location": 1,
+          "teams": [3, 4]
+        },
+        {
+          "id": 3,
+          "date": "2024-01-30T19:00:00Z",
+          "location": 1,
+          "teams": [5, 1]
+        },
+        {
+          "id": 4,
+          "date": "2024-01-30T20:00:00Z",
+          "location": 2,
+          "teams": [2, 4]
+        },
+        {
+          "id": 5,
+          "date": "2024-02-06T20:00:00Z",
+          "location": 2,
+          "teams": [5, 2]
+        },
+        {
+          "id": 6,
+          "date": "2024-02-08T20:00:00Z",
+          "location": 2,
+          "teams": [1, 4]
+        },
+        {
+          "id": 7,
+          "date": "2024-02-15T20:00:00Z",
+          "location": 2,
+          "teams": [2, 3]
+        },
+        {
+          "id": 8,
+          "date": "2024-02-15T19:00:00Z",
+          "location": 1,
+          "teams": [5, 4]
+        },
+        {
+          "id": 9,
+          "date": "2024-02-22T19:00:00Z",
+          "location": 1,
+          "teams": [2, 1]
+        },
+        {
+          "id": 10,
+          "date": "2024-02-27T19:00:00Z",
+          "location": 1,
+          "teams": [5, 3]
+        },
+        {
+          "id": 11,
+          "date": "2024-03-05T19:00:00Z",
+          "location": 1,
+          "teams": [4, 3]
+        },
+        {
+          "id": 12,
+          "date": "2024-03-05T20:00:00Z",
+          "location": 2,
+          "teams": [1, 5]
+        },
+        {
+          "id": 13,
+          "date": "2024-03-12T20:00:00Z",
+          "location": 2,
+          "teams": [3, 1]
+        },
+        {
+          "id": 14,
+          "date": "2024-03-14T20:00:00Z",
+          "location": 2,
+          "teams": [2, 5]
+        },
+        {
+          "id": 15,
+          "date": "2024-03-21T20:00:00Z",
+          "location": 2,
+          "teams": [4, 2]
+        },
+        {
+          "id": 16,
+          "date": "2024-03-21T19:00:00Z",
+          "location": 1,
+          "teams": [3, 5]
+        },
+        {
+          "id": 17,
+          "date": "2024-03-28T19:00:00Z",
+          "location": 1,
+          "teams": [4, 1]
+        },
+        {
+          "id": 18,
+          "date": "2024-04-09T19:00:00Z",
+          "location": 1,
+          "teams": [3, 2]
+        },
+        {
+          "id": 19,
+          "date": "2024-04-16T19:00:00Z",
+          "location": 1,
+          "teams": [4, 5]
+        },
+        {
+          "id": 20,
+          "date": "2024-04-23T19:00:00Z",
+          "location": 1,
+          "teams": [1, 3]
+        }
+      ]
+    }
+  ]
+}
