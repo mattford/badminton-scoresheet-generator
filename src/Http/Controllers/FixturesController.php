@@ -24,6 +24,7 @@ class FixturesController extends Controller
                 $dt = \DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $fixture['date']);
                 $fixture['dt'] = $dt;
                 $fixture['date'] = $dt->format('d/m/Y g:i A');
+                $fixture['location'] = $fixture['location'] === 1 ? 'HALC' : 'WHA';
                 $fixture['team_names'] = array_map(fn($id) => $teamNames[$id], $fixture['teams']);
                 return $fixture;
             }, $division['fixtures']);
