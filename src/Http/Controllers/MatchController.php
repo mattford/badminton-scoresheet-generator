@@ -150,6 +150,8 @@ class MatchController extends Controller
                 return array_merge($players[0], $scores, $players[1]);
             }, $gameList, $data['scores']),
         ];
+        $filename = 'result.png';
+        header('Content-Disposition: attachment; filename="' . $filename . '"');
         header('Content-Type: image/png');
         $imageService = new ResultImageGeneratorService();
         $imageService->generate($input);
