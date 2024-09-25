@@ -3,7 +3,7 @@
     "description": "App to generate scoresheets for WSM Open Badminton League",
     "type": "project",
     "require": {
-        "phpoffice/phpspreadsheet": "^1.27",
+        "phpoffice/phpspreadsheet": "^2.2",
         "slim/slim": "^4.11",
         "slim/twig-view": "^3.3",
         "slim/psr7": "^1.6",

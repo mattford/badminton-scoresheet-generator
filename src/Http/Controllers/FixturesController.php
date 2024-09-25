@@ -9,7 +9,7 @@ class FixturesController extends Controller
 {
     public function view(Request $request, Response $response)
     {
-        $data = json_decode(file_get_contents(BASE_PATH . '/resources/assets/season7.json'), true);
+        $data = json_decode(file_get_contents(BASE_PATH . '/resources/assets/season8.json'), true);
 
         $locations = [];
         foreach ($data['locations'] as $location) {
