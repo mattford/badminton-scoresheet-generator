@@ -18,6 +18,7 @@ $app->post('/generate', [GenerateScoresheetController::class, 'generate']);
 $app->post('/results', [MatchController::class, 'generateResult']);
 $app->post('/match', [MatchController::class, 'view']);
 $app->get('/fixtures', [FixturesController::class, 'view']);
+$app->get('/fixtures/export', [FixturesController::class, 'export']);
 $app->get('/{path:.*}', function (\Slim\Psr7\Request $req, \Slim\Psr7\Response $res) {
     $targetPath = realpath(__DIR__ . $req->getUri()->getPath());
     if (str_starts_with($targetPath, __DIR__) && is_file($targetPath) && is_readable($targetPath)) {

@@ -3,6 +3,7 @@ namespace Mattford\WsmOpenScoresheet\Http\Controllers;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Mattford\WsmOpenScoresheet\Services\CalendarExportService;
 use Slim\Views\Twig;
 
 class FixturesController extends Controller
@@ -35,4 +36,41 @@ class FixturesController extends Controller
         return $twig->render($response, 'fixtures.twig', ['data' => compact('locations', 'divisions')]);
     }
 
+    public function export()
+    {
+        $divisionId = $_GET['division_id'] ?? 0;
+        $teamId = $_GET['team_id'] ?? 0;
+        $data = json_decode(file_get_contents(BASE_PATH . '/resources/assets/season8.json'), true);
+
+        // Export an ICS file containing all the fixtures
+        $exportService = new CalendarExportService();
+        $locations = array_combine(array_column($data['locations'], 'id'), $data['locations']);
+        $preparedEvents = [];
+        foreach ($data['divisions'] as $division) {
+            if ($division['id'] != $divisionId) {
+                continue;
+            }
+            $teams = array_combine(array_column($division['teams'], 'id'), $division['teams']);
+            foreach ($division['fixtures'] as $fixture) {
+                if (!in_array($teamId, $fixture['teams'])) {
+                    continue;
+                }
+                $fixture['location'] = $locations[$fixture['location']];
+                $fixture['teams'] = array_map(fn($id) => $teams[$id]['name'], $fixture['teams']);
+
+                $preparedEvents[] = $exportService->buildVEvent($fixture);
+            }
+        }
+
+        $PRODID = "-//WSM Open Badminton Club//scoresheet.wsmbadminton.co.uk//EN";
+        $FILENAME = "WSM_Open_Badminton_Club_Fixtures_" . date('m_Y');
+        $data = "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nCALSCALE:GREGORIAN\r\nPRODID:" . $PRODID . "\r\nMETHOD:PUBLISH\r\nX-WR-TIMEZONE:Europe/LONDON\r\n" . implode('', $preparedEvents) . "END:VCALENDAR\r\n";
+        header('Content-type: text/calendar; charset=utf-8');
+        header('Content-Disposition: attachment; filename="' . $FILENAME . '.ics"');
+        header('Content-Length: ' . strlen($data));
+        header('Connection: close');
+        header('Pragma: no-cache');
+        echo $data;
+        exit(0);
+    }
 }

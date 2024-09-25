@@ -48,7 +48,7 @@
                         {% endfor %}
                         </tbody>
                     </table>
-
+                    <button data-division="{{ division['id'] }}" class="btn btn-primary download-ics">Download calendar events</button>
                 </div>
             {% endfor %}
         </div>
@@ -71,5 +71,16 @@
                }
            });
         });
+        document.querySelectorAll('.download-ics').forEach(element => {
+            element.addEventListener('click', function (event) {
+                const selectedTeam = document.querySelector('.tab-pane.active .team-selector').value;
+                const division = event.target.getAttribute('data-division');
+                if (selectedTeam != Number(selectedTeam)) {
+                    alert('Select a team first');
+                    return;
+                }
+                window.open('/fixtures/export?division_id=' + division + '&team_id=' + selectedTeam);
+            })
+        })
     </script>
 {% endblock %}
