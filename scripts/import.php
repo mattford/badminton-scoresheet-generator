@@ -40,7 +40,7 @@ $divisions = [];
 $cols = ['Day', 'Date', 'Time', 'Venue', 'Div', null, 'Team 1', null, null, null, 'Team 2'];
 
 $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($inputPath);
-$startRow = 2;
+$startRow = 6;
 // loop through rows and gather up all the games
 foreach ($spreadsheet->getActiveSheet()->getRowIterator($startRow) as $row) {
     $cellIterator = $row->getCellIterator();
@@ -52,6 +52,9 @@ foreach ($spreadsheet->getActiveSheet()->getRowIterator($startRow) as $row) {
         }
         $colIndex++;
     }
+    if (empty($data['Team 1'])) {
+        continue;
+    }
     $division = $data['Div'];
     if (!isset($divisions[$division])) {
         $divisions[$division] = [
@@ -61,7 +64,7 @@ foreach ($spreadsheet->getActiveSheet()->getRowIterator($startRow) as $row) {
             'fixtures' => [],
         ];
     }
-    $when = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($data['Date']);
+    $when = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject((int)$data['Date']);
     $hour = (int) $data['Time'];
     $when->setTime($hour + 12, 0);
     $game = [];
@@ -93,8 +96,8 @@ file_put_contents($outputPath, json_encode(compact('locations', 'divisions'), JS
 
 function parseTeam(string $in): array
 {
-    $lastDash = strrpos($in, '-');
+    $lastDash = strrpos($in, ' - ');
     $name = trim(substr($in, 0, $lastDash));
-    $players = explode(',', trim(substr($in, $lastDash + 1)));
+    $players = explode(',', trim(substr($in, $lastDash + 3)));
     return [trim($name), array_map('trim', $players)];
 }

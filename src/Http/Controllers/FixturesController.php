@@ -8,9 +8,12 @@ use Slim\Views\Twig;
 
 class FixturesController extends Controller
 {
+    public const SEASON = 9;
+    public const DATA_FILE_PATH = '/resources/assets/season9.json';
+
     public function view(Request $request, Response $response)
     {
-        $data = json_decode(file_get_contents(BASE_PATH . '/resources/assets/season8.json'), true);
+        $data = json_decode(file_get_contents(BASE_PATH . self::DATA_FILE_PATH), true);
 
         $locations = [];
         foreach ($data['locations'] as $location) {
@@ -33,14 +36,14 @@ class FixturesController extends Controller
             return $division;
         }, $data['divisions']);
         $twig = Twig::fromRequest($request);
-        return $twig->render($response, 'fixtures.twig', ['data' => compact('locations', 'divisions')]);
+        return $twig->render($response, 'fixtures.twig', ['season' => self::SEASON, 'data' => compact('locations', 'divisions')]);
     }
 
     public function export()
     {
         $divisionId = $_GET['division_id'] ?? 0;
         $teamId = $_GET['team_id'] ?? 0;
-        $data = json_decode(file_get_contents(BASE_PATH . '/resources/assets/season8.json'), true);
+        $data = json_decode(file_get_contents(BASE_PATH . self::DATA_FILE_PATH), true);
 
         // Export an ICS file containing all the fixtures
         $exportService = new CalendarExportService();
