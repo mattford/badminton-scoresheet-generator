@@ -75,8 +75,8 @@ foreach ($spreadsheet->getActiveSheet()->getRowIterator($startRow) as $row) {
         $when->modify('+1 year');
     }
     $hour = (int) $data['Time'];
-    $when->setTime($hour + 12, 0);
     $when->setTimezone(new DateTimeZone('Europe/London'));
+    $when->setTime($hour + 12, 0);
     $game = [];
     $game['date'] = $when->format('Y-m-d\TH:i:sp');
     $game['teams'] = [$data['Team 1'], $data['Team 2']];

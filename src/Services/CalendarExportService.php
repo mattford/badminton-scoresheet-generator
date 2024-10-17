@@ -6,10 +6,10 @@ class CalendarExportService
     public function buildVEvent(array $game): string
     {
         $eventTitle = $this->prepContent('League Match: ' . implode(' vs ', $game['teams']), strlen('SUMMARY'));
-        $startTime = \DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $game['date']);
+        $startTime = \DateTime::createFromFormat('Y-m-d\TH:i:sp', $game['date']);
         $fields = [];
-        $fields['DTSTART'] = $startTime->format("Ymd\THis\Z");
-        $fields['DTEND'] = $startTime->add(new \DateInterval('PT2H'))->format("Ymd\THis\Z");
+        $fields['DTSTART'] = $startTime->format("Ymd\THisp");
+        $fields['DTEND'] = $startTime->add(new \DateInterval('PT2H'))->format("Ymd\THisp");
         $fields['ORGANIZER'] = ';CN=Paul Edwards:mailto:predwards@hotmail.co.uk';
         $fields['LOCATION'] = $game['location']['name'];
         $fields['GEO'] = implode(';', $game['location']['geolocation']);

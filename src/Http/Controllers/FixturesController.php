@@ -19,16 +19,17 @@ class FixturesController extends Controller
         foreach ($data['locations'] as $location) {
             $locations[$location['id']] = $location['name'];
         }
-        $divisions = array_map(function ($division) {
+        $divisions = array_map(function ($division) use ($locations) {
             $teamNames = [];
             foreach ($division['teams'] as $team) {
                 $teamNames[$team['id']] = $team['name'] . ' (' . implode(', ', $team['players']) . ')';
             }
-            $division['fixtures'] = array_map(function ($fixture) use ($teamNames) {
-                $dt = \DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $fixture['date']);
+            $division['fixtures'] = array_map(function ($fixture) use ($teamNames, $locations) {
+                $dt = \DateTime::createFromFormat('Y-m-d\TH:i:sp', $fixture['date']);
+                $dt->setTimezone(new \DateTimeZone('Europe/London'));
                 $fixture['dt'] = $dt;
                 $fixture['date'] = $dt->format('d/m/Y g:i A');
-                $fixture['location'] = $fixture['location'] === 1 ? 'HALC' : 'WHA';
+                $fixture['location'] = $locations[$fixture['location']];
                 $fixture['team_names'] = array_map(fn($id) => $teamNames[$id], $fixture['teams']);
                 return $fixture;
             }, $division['fixtures']);
