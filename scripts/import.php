@@ -4,7 +4,7 @@ if (count($argv) < 3) {
     echo "Usage: php import.php <path-to-excel> <output-path>\n";
     exit(1);
 }
-
+date_default_timezone_set('Europe/London');
 [, $inputPath, $outputPath] = $argv;
 
 $locations = [
@@ -32,7 +32,12 @@ $locations = [
         'id' => 5,
         "name" => "Locking Parklands",
         "geolocation" => [51.33707521248316, -2.9108037314613693],
-    ]
+    ],
+    'BOak' => [
+        'id' => 6,
+        'name' => 'Broadoak Academy',
+        'geolocation' =>  [51.32907903390818, -2.9758178970861007],
+    ],
 ];
 
 $divisions = [];
@@ -65,10 +70,15 @@ foreach ($spreadsheet->getActiveSheet()->getRowIterator($startRow) as $row) {
         ];
     }
     $when = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject((int)$data['Date']);
+    // fix for games in the past
+    if ($when->format('m') < 6) {
+        $when->modify('+1 year');
+    }
     $hour = (int) $data['Time'];
     $when->setTime($hour + 12, 0);
+    $when->setTimezone(new DateTimeZone('Europe/London'));
     $game = [];
-    $game['date'] = $when->format('Y-m-d\TH:i:s\Z');
+    $game['date'] = $when->format('Y-m-d\TH:i:sp');
     $game['teams'] = [$data['Team 1'], $data['Team 2']];
     foreach ($game['teams'] as $idx => $team) {
         [$name, $players] = parseTeam($team);
