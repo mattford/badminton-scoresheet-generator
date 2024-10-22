@@ -3,7 +3,11 @@
 {% block content %}
     <div class="container">
         <h1>WSM Open Badminton League - Season {{ season }}</h1>
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <div class="alert alert-danger">
+            Due to venue cancellations the fixtures for Season 9 are mostly unconfirmed at this stage, please check the WSM Open League FB group for updates.
+        </div>
+    </div>
+      {#  <ul class="nav nav-tabs" id="myTab" role="tablist">
             {% for division in data['divisions'] %}
                 <li class="nav-item" role="presentation">
                     <button
@@ -83,4 +87,5 @@
             })
         })
     </script>
+#}
 {% endblock %}
